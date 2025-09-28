@@ -2,6 +2,9 @@
 
 **DDL** stands for **Data Definition Language**. Think of it as the set of commands we use to create and manage the structure of a database - like building the blueprint of a house before you can put furniture in it.
 
+> - DDL అంటే **Data Definition Language**. దీన్ని మనం డేటాబేస్ నిర్మాణం క్రియేట్ చేసి, మేనేజ్ చేయడానికి వాడే కమాండ్స్ సెట్‌గా ఊహించుకోవచ్చు — అంటే ఒక ఇల్లు కట్టడానికి ముందు బ్లూప్రింట్ (ప్లాన్) వేసుకున్నట్టు.
+> - "డేటాబేస్ నిర్మాణం" అంటే డేటాబేస్‌లో డేటాను ఎలా స్టోర్‌ చేయాలి, ఏ టేబుళ్లు ఉండాలి, వాటిలో ఏ కాలమ్స్ ఉండాలి, వాటి డేటా టైప్ ఏమిటి అన్నది ప్లాన్‌ చేయడం. ఉదాహరణకు, నీకు **స్టూడెంట్ ఇన్ఫర్మేషన్** స్టోర్‌ చేయాలి అనుకుంటే, ఒక **Students అనే టేబుల్** క్రియేట్ చేస్తావు. అందులో `StudentID (number)`, `Name (text)`, `Age (number)`, `Class (text)` లాంటి కాలమ్స్ పెడతావు. ఈ టేబుల్ డిజైన్‌ చేసి రూల్స్ డిఫైన్ చేయడమే "డేటాబేస్ నిర్మాణం".
+
 DDL commands help us:
 - Create new tables (like making new folders)
 - Modify existing tables (like adding new sections to folders)

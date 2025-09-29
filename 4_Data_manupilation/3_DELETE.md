@@ -10,6 +10,8 @@
 - **DELETE** = Remove existing rows
 - **DROP** = Remove entire table (DDL command)
 
+> - DELETE అనేది DML command, table నుండి ఉన్న rows remove చేయడానికి వాడతాం. notebook లోని lines erase చేయడం లాంటిది – notebook (table) అలాగే ఉంటుంది, కానీ information పోతుంది. ముఖ్య తేడాలు: INSERT = కొత్త rows add చేయడం, UPDATE = ఉన్న rows మార్చడం, DELETE = ఉన్న rows remove చేయడం, DROP = మొత్తం table remove చేయడం (DDL command).
+
 ---
 
 ### 2. Basic DELETE Syntax
@@ -23,6 +25,15 @@ WHERE condition
 1. `DELETE FROM` - Command to remove data
 2. `table_name` - Which table to delete from
 3. `WHERE condition` - Which rows to delete (CRITICAL!)
+
+> - Basic DELETE syntax ఇలా ఉంటుంది:
+
+```sql
+DELETE FROM table_name  
+WHERE condition  
+```
+
+> - అర్థం: DELETE FROM – data remove చేయడానికి command, table_name – ఏ table నుండి delete చేయాలో, WHERE condition – ఏ rows delete చేయాలో (చాలా ముఖ్యం!).
 
 ---
 
@@ -42,6 +53,21 @@ WHERE ID = 6
 **Result**: Only customer #6 is deleted
 
 **Rule**: DELETE is MORE DANGEROUS than UPDATE! Always use WHERE unless you really want to delete everything!
+
+> - చాలా ముఖ్యం: DELETE వాడేటప్పుడు ఎల్లప్పుడూ WHERE ఉపయోగించాలి! WHERE లేకుండా DELETE చేస్తే:
+
+```sql
+DELETE FROM customers  
+```
+
+> - అన్నీ customers delete అవుతాయి, table ఖాళీ అవుతుంది! WHERE తో DELETE చేస్తే సురక్షితం:
+
+```sql
+DELETE FROM customers  
+WHERE ID = 6  
+```
+
+> - అప్పుడే కేవలం customer #6 మాత్రమే delete అవుతుంది. Rule: DELETE UPDATE కంటే ఎక్కువ ప్రమాదకరం, మొత్తం delete చేయాలనుకోకపోతే ఎల్లప్పుడూ WHERE వాడాలి.
 
 ---
 
@@ -133,6 +159,27 @@ TRUNCATE TABLE persons
 - Use DELETE if you need to keep logs or undo later
 - Use TRUNCATE if you just want an empty table quickly
 
+> - Table లోని అన్ని data delete చేయడానికి రెండు మార్గాలు ఉన్నాయి:
+
+> - Method 1 – DELETE (Slower):
+
+```sql
+DELETE FROM persons  
+```
+
+> - అన్ని rows ఒక్కొక్కటిగా delete అవుతాయి, logs మరియు records retain చేస్తుంది, "X rows affected" చూపిస్తుంది, పెద్ద tables కోసం slow.
+
+> - Method 2 – TRUNCATE (Faster):
+
+```sql
+TRUNCATE TABLE persons  
+```
+
+> - అన్ని rows ఒక్కసారి delete అవుతాయి, logs లేదా records save చేయదు, "rows affected" message చూపించదు, పెద్ద tables కోసం చాలా fast.
+
+> - ఎప్పుడు ఏది వాడాలి: logs అవసరం ఉంటే లేదా undo కావాలంటే DELETE, table ఖాళీ చేయడమే కావాలంటే TRUNCATE.
+
+
 ---
 
 ### 7. Important: DELETE vs DROP vs TRUNCATE
@@ -142,6 +189,8 @@ TRUNCATE TABLE persons
 | **DELETE** | Rows (data) | ✓ Yes | Sometimes |
 | **TRUNCATE** | All rows (data) | ✓ Yes | No |
 | **DROP** | Entire table | ✗ No | No |
+
+> - ముఖ్యమైన తేడాలు: DELETE, TRUNCATE, DROP commands. DELETE – rows (data) remove చేస్తుంది, table ఇంకా ఉంటుంది, కొన్నిసార్లు undo చేయవచ్చు. TRUNCATE – అన్ని rows remove చేస్తుంది, table ఇంకా ఉంటుంది, undo చేయలేరు. DROP – మొత్తం table remove చేస్తుంది, table పోతుంది, undo చేయలేరు.
 
 **Visual Example**:
 
@@ -245,6 +294,19 @@ WHERE ID = 99  -- Customer 99 doesn't exist
 DELETE FROM customers
 WHERE country = NULL  -- Wrong! Won't work!
 -- Should be: WHERE country IS NULL
+```
+
+> - ❌ తప్పు 3: NULL తో = వాడటం సరియాదు
+
+```sql
+DELETE FROM customers  
+WHERE country = NULL  -- తప్పు! పనిచేయదు  
+```
+
+> - సరియైన విధానం:
+
+```sql
+WHERE country IS NULL
 ```
 
 ❌ **Mistake 4: Deleting when you meant to UPDATE**
@@ -369,6 +431,8 @@ WHERE end_date < '2024-01-01'
 - Forget to check how many rows were deleted
 - Delete important data without backup
 
+> - DELETE Best Practices: ✓ చేయవలసింది: ఎల్లప్పుడూ ముందుగా SELECT తో test చేయండి, WHERE clause ఉపయోగించండి (మొత్తం data delete చేయాలంటే తప్ప), "rows affected" message సరిగా చూడండి, DELETE తర్వాత SELECT తో verify చేయండి, పెద్ద tablesలో అన్ని data delete చేయడానికి TRUNCATE వాడండి, major deletions కి ముందే backups తీసుకోండి. ✗ చేయకూడదు: WHERE లేకుండా delete చేయడం (మొత్తం delete చేయాలనుకోకపోతే), WHERE condition test చేయకుండా వాడటం, = NULL వాడటం (IS NULL ఉపయోగించండి), ఎంత rows delete అయ్యాయో చూడకపోవడం, important data backup లేకుండా delete చేయడం.
+
 ---
 
 ### 15. Risk Levels of Commands
@@ -392,6 +456,8 @@ WHERE end_date < '2024-01-01'
 - **WHERE clause**: Specifies which rows to delete
 - **IS NULL**: Checks if value is NULL
 - **DML (Data Manipulation Language)**: Commands that change data (INSERT, UPDATE, DELETE)
+
+> - Key Vocabulary: DELETE – table నుండి rows remove చేయడానికి command, TRUNCATE – table లోని అన్ని rows త్వరగా remove చేయడానికి command, Rows affected – ఎంత rows delete అయ్యాయో చూపిస్తుంది, WHERE clause – ఏ rows delete చేయాలో specify చేస్తుంది, IS NULL – value NULL ఉందో check చేస్తుంది, DML (Data Manipulation Language) – table లో data మార్చే commands (INSERT, UPDATE, DELETE).
 
 ---
 
@@ -476,5 +542,7 @@ Next, you'll learn **intermediate SQL** topics like:
 - Advanced filtering with WHERE clause
 - More operators for complex conditions
 - Joining multiple tables together
+
+> - తర్వాత, మీరు intermediate SQL topics నేర్చుకుంటారు, వాటిలో: WHERE clause తో advanced filtering, complex conditions కోసం మరిన్ని operators, multiple tables ను join చేయడం.
 
 Great job learning the fundamentals! 🎓

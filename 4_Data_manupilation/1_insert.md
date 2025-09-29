@@ -8,6 +8,8 @@
 - **DDL commands** (CREATE, ALTER, DROP) change the structure (the container)
 - **DML commands** (INSERT) change the data (what goes inside the container)
 
+> - INSERT అనేది DML (Data Manipulation Language) command, tableలో కొత్త rows add చేయడానికి వాడతాం. notebook already ఉన్నట్టు table కూడా ఉంది, ఇప్పుడు దానిలో information భర్తీ చేస్తున్నాం అని అనుకోండి. ముఖ్య తేడా: DDL commands (CREATE, ALTER, DROP) structure (container) మార్చతాయి, DML commands (INSERT) ఆ containerలోని dataని మార్చతాయి.
+
 ---
 
 ### 2. When Do We Use INSERT?
@@ -15,6 +17,8 @@
 - When you have an empty table and want to add data
 - When you want to add more rows to a table that already has data
 - SQL automatically adds new rows at the end of the table
+
+> - INSERT command మనం వాడేది: table ఖాళీగా ఉన్నప్పుడు data add చేయడానికి, లేదా ఇప్పటికే data ఉన్న tableలో కొత్త rows add చేయడానికి. SQL కొత్త rows table చివరలోనే automatically add చేస్తుంది.
 
 ---
 
@@ -49,6 +53,28 @@ VALUES (6, 'Anna', 'USA', NULL)
 
 **Result**: "1 row affected" message
 
+---
+
+Basic INSERT syntax ఇలా ఉంటుంది:
+
+```sql
+INSERT INTO table_name (column1, column2, column3)  
+VALUES (value1, value2, value3)  
+```
+
+అర్థం: INSERT INTO – data add చేయడానికి command, table_name – data ఏ tableకి add చేయాలో, (column1, column2…) – data ఎక్కడ చేర్చాలో columns, VALUES – data ముందే keyword, (value1, value2…) – నిజమైన data.
+
+ఉదాహరణకి, ఒక కొత్త customer add చేయడం:
+
+```sql
+INSERT INTO customers (ID, first_name, country, score)  
+VALUES (6, 'Anna', 'USA', NULL)  
+```
+
+ఇది ID 6, name Anna, country USA, score ఇంకా తెలియదు (NULL)తో ఒక కొత్త customer add చేస్తుంది. Result: "1 row affected" message వస్తుంది.
+
+---
+
 ### 5. Inserting Multiple Rows at Once
 
 ```sql
@@ -64,6 +90,21 @@ VALUES
 - Sam's country is NULL (unknown), but score is 100
 
 **Result**: "2 rows affected" message
+
+---
+
+ఒకేసారి multiple rows insert చేయాలంటే:
+
+```sql
+INSERT INTO customers (ID, first_name, country, score)  
+VALUES  
+    (6, 'Anna', 'USA', NULL),  
+    (7, 'Sam', NULL, 100)  
+```
+
+గమనించండి: multiple rows ని comma (,) తో వేరు చేయాలి, ప్రతి row తన parentheses లో ఉండాలి. ఇక్కడ Sam country తెలియదు (NULL), కానీ score 100. Result: "2 rows affected" message వస్తుంది.
+
+---
 
 ---
 
@@ -134,6 +175,15 @@ VALUES (10, 'Sarah')
 
 **Warning**: You can only skip columns that allow NULL values!
 
+> - కొన్ని columns మాత్రమే insert చేయాలంటే, మిగతా columns NULL అవుతాయి:
+
+```sql
+INSERT INTO customers (ID, first_name)  
+VALUES (10, 'Sarah')  
+```
+
+> - ఇది insert చేసినప్పుడు Sarah column values లో country మరియు score NULL (empty) అవుతాయి. గమనిక: NULL values allow చేసిన columns మాత్రమే skip చేయవచ్చు.
+
 ---
 
 ### 8. Understanding NULL Values
@@ -149,6 +199,15 @@ INSERT INTO customers (ID, first_name, country, score)
 VALUES (6, 'Anna', 'USA', NULL)
 ```
 Anna's score is NULL = we don't know her score yet
+
+> - NULL అంటే ఏమిటంటే “data లేదు” లేదా “తెలియదు” అని. ఇది 0 లేదా empty text "" కాదని గమనించాలి. అంటే మనకు ఆ సమాచారం ఇంకా లేదు అని అర్థం. ఉదాహరణకి:
+
+```sql
+INSERT INTO customers (ID, first_name, country, score)  
+VALUES (6, 'Anna', 'USA', NULL)  
+```
+
+> - ఇక్కడ Anna score NULL = మనకు ఆమె score ఇంకా తెలియదు.
 
 ---
 
@@ -176,6 +235,8 @@ Instead of typing values manually, we can **copy data from one table to another 
 - Target table: `persons` (empty, needs data)
 - Goal: Copy customer information into persons table
 
+> - మనం values ని మానవీయంగా type చేయడం కాకుండా, ఒక table నుండి data copy చేసి మరొక table లో insert చేయవచ్చు. ఉదాహరణ: source table – customers (data already ఉంది), target table – persons (ఖాళీ, data కావాలి). మన లక్ష్యం: customers table లోని సమాచారం persons table కి copy చేయడం.
+
 ### 11. Two-Step Process
 
 **Step 1**: Write a SELECT query to get data from source table
@@ -190,6 +251,24 @@ INSERT INTO persons (ID, person_name, birth_date, phone)
 SELECT ID, first_name, NULL, 'unknown'
 FROM customers
 ```
+
+> - ఇది రెండు-పదుల ప్రక్రియ: Step 1 – source table నుండి data select చేయడం:
+
+```sql
+SELECT ID, first_name, NULL, 'unknown'  
+FROM customers  
+```
+
+> - Step 2 – SELECT ముందు INSERT INTO add చేయడం:
+
+```sql
+INSERT INTO persons (ID, person_name, birth_date, phone)  
+SELECT ID, first_name, NULL, 'unknown'  
+FROM customers  
+```
+
+> - అర్థం: customers table నుండి data select చేసి, persons table లో insert చేయడం.
+
 
 ### 12. Complete Example with Explanation
 
@@ -218,6 +297,21 @@ FROM customers
 
 **Result**: "10 rows affected" - copied 10 customers to persons table
 
+> - Target table persons structure: ID (int, NOT NULL), person_name (varchar, NOT NULL), birth_date (date, NULL అవ్వచ్చు), phone (varchar, NOT NULL). Source table customers లో ID, first_name ఉన్నవి; country, score మనకు అవసరం లేదు. INSERT query:
+
+```sql
+INSERT INTO persons (ID, person_name, birth_date, phone)  
+SELECT  
+    ID,           -- ID కాపీ చేయడం  
+    first_name,   -- first_name ను person_name గా కాపీ చేయడం  
+    NULL,         -- birth_date data లేనందున NULL వాడడం  
+    'unknown'     -- phone data లేనందున default 'unknown' వాడడం  
+FROM customers  
+```
+
+> - Result: "10 rows affected" – 10 customers persons table లో copy అయ్యాయి.
+
+
 ---
 
 ### 13. Important Points for INSERT...SELECT
@@ -239,6 +333,8 @@ FROM customers
 - varchar → varchar ✓
 - int → varchar ✗ (usually error)
 
+> - INSERT…SELECT లో ముఖ్యమైన విషయాలు: Column names match కావలసిన అవసరం లేదు – source లో first_name, target లో person_name ఉన్నా సరిపోతుంది, databaseకి data types match అవుతాయా అన్నే ముఖ్యం. Columns సంఖ్య match అవ్వాలి – target 4 columns ఉన్నా SELECT 4 columns return చేయాలి. Static values వాడవచ్చు – missing data కోసం NULL (అనుమతించబడితే), default text కోసం 'unknown', default numbers కోసం 0. Data types compatible ఉండాలి – int → int ✓, varchar → varchar ✓, int → varchar ✗ (సాధారణంగా error).
+
 ---
 
 ### 14. Comparing Both INSERT Methods
@@ -249,6 +345,8 @@ FROM customers
 | **Data source** | You type it | From another table |
 | **Speed** | Slow for many rows | Fast for many rows |
 | **Example** | Adding 1-5 customers | Copying 1000 customers |
+
+> - రెండు INSERT methods తేడాలు: Method 1 (Manual VALUES) – కొద్దీ rows add చేయడానికి, data మీరు manually type చేయాలి, చాలా rows కోసం slow. Method 2 (INSERT…SELECT) – ఎక్కువ rows copy చేయడానికి, data మరో table నుండి వస్తుంది, ఎక్కువ rows కోసం fast. ఉదాహరణ: 1-5 customers add చేయడం vs 1000 customers copy చేయడం.
 
 ---
 
@@ -291,6 +389,7 @@ WHERE grade = 7
 ❌ **Mistake 1**: Wrong order of values
 ```sql
 -- Country and name are swapped!
+-- Country మరియు name స్థానాలు మార్చి పెట్టబడ్డాయి!
 INSERT INTO customers (ID, first_name, country)
 VALUES (8, 'USA', 'Max')
 ```
@@ -298,6 +397,7 @@ VALUES (8, 'USA', 'Max')
 ❌ **Mistake 2**: Missing required values
 ```sql
 -- ID is NOT NULL, can't skip it!
+-- ID NOT NULL ఉంది, కాబట్టి దానిని skip చేయలేరు!
 INSERT INTO customers (first_name, country)
 VALUES ('Max', 'USA')
 ```
@@ -328,6 +428,8 @@ VALUES ('hello', 'Max')
 - **Target table**: Table where data goes to
 - **DML (Data Manipulation Language)**: Commands that change data (INSERT, UPDATE, DELETE)
 
+> - Key Vocabularyలో, INSERT అంటే tableలో కొత్త rows add చేయడానికి command, VALUES అంటే నిజమైన data ముందు వాడే keyword, NULL అంటే “data లేదు” లేదా “తెలియదు”, Rows affected అంటే ఎంత rows insert అయ్యాయో చూపిస్తుంది, Source table అంటే data వస్తున్న table, Target table అంటే data చేరే table, DML (Data Manipulation Language) అంటే table లో data మార్చే commands (INSERT, UPDATE, DELETE).
+
 ---
 
 ### 18. Quick Tips
@@ -338,6 +440,8 @@ VALUES ('hello', 'Max')
 ✓ Use INSERT...SELECT for copying many rows
 ✓ Use VALUES for adding a few rows manually
 ✓ Test with SELECT first before doing INSERT...SELECT
+
+> - Quick Tips: ఎప్పుడూ column order double-check చేయండి, values data types కి సరిపోతున్నాయా చూసుకోండి, ఏ columns NULL కి అనుమతించబడతాయో గుర్తుంచుకోండి, ఎక్కువ rows copy చేయడానికి INSERT…SELECT వాడండి, కొద్దీ rows manually add చేయడానికి VALUES వాడండి, INSERT…SELECT run చేయేముందు SELECT తో test చేయండి.
 
 ---
 
@@ -356,3 +460,5 @@ VALUES ('hello', 'Max')
    - Format: `INSERT INTO table (columns) SELECT ... FROM source_table`
 
 Both methods add new rows to your table, and both show "X rows affected" instead of returning data!
+
+> - Summary: Data insert చేయడానికి రెండు మార్గాలు ఉన్నాయి: Manual INSERT with VALUES – data మీరు మానవీయంగా type చేయడం, చిన్న data కోసం బాగుంది, format: INSERT INTO table (columns) VALUES (data). INSERT from SELECT – data మరో table నుండి copy చేయడం, పెద్ద data కోసం బాగుంది, format: INSERT INTO table (columns) SELECT … FROM source_table. ఇరువురు methods కొత్త rows table లో add చేస్తాయి, data return చేయకుండా "X rows affected" చూపిస్తాయి.

@@ -20,6 +20,20 @@ END
 - `BEGIN` and `END` = Like opening and closing brackets { }
 - Everything between BEGIN and END = Your SQL commands
 
+> - Basic Syntax (Rules) లో Stored Procedure create చేయడం ఇలా ఉంటుంది:
+
+> - `CREATE PROCEDURE procedure_name AS BEGIN -- SQL commands END`
+
+> - ఇక్కడ ముఖ్యమైన భాగాలు:
+
+> - * `CREATE PROCEDURE` = SQL కి కొత్త stored procedure create చేస్తానని చెప్పటం
+> - * `procedure_name` = దానికి పేరు ఇవ్వడం (మీ pet కి పేరు పెట్టినట్టు!)
+> - * `AS` = “ఇది చేస్తుంది” అన్న అర్థం
+> - * `BEGIN` మరియు `END` = code opening & closing brackets లా
+> - * `BEGIN` మరియు `END` మధ్య వున్నది = నీ SQL commands (SELECT, INSERT, UPDATE లాంటి)
+
+> - “AS” అంటే Stored Procedure లో “ఇక్కడటి code ఈ పని చేస్తుంది” అని SQL కి చెబుతూ ఉండటం. అర్థం సింపుల్‌గా, “ఇది Stored Procedure ఏ పని చేస్తుందో చెప్పే భాగం” అని గుర్తించుకో.
+
 ### Part 2: Running (Executing) a Stored Procedure
 
 ```sql
@@ -27,6 +41,8 @@ EXECUTE procedure_name
 ```
 
 That's it! Just write EXECUTE and the name. Super simple! 🎉
+
+> - Part 2: Stored Procedure run చేయడం అంటే, ఒక్క `EXECUTE procedure_name` అని రాయడం. అంతే! అద్భుతంగా సింపుల్ 🎉
 
 ---
 
@@ -102,6 +118,8 @@ You can find it in the database:
 3. Look for **Programmability** folder
 4. Inside, find **Stored Procedures** folder
 5. There it is! Your `Get_Customer_Summary` is saved! 📁
+
+> - నా Stored Procedure ఎక్కడుందంటే, database లో ఉంటుంది: Object Explorer ఓపెన్ చేయి, నీ database (ఉదా: sales_DB) కి వెళ్ళి, Programmability folder చూడాలి. అందులో Stored Procedures folder లో నీ Get_Customer_Summary saved గా ఉంటుంది! 📁
 
 ---
 

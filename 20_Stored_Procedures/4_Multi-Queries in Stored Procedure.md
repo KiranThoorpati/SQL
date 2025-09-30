@@ -9,6 +9,8 @@
 - Recipe 2: How to make juice
 - Both on the same page, you follow them one by one!
 
+> - “Multiple Queries” అంటే, ఒక్క stored procedure లో ఒక కన్నా ఎక్కువ SQL commands పెట్టుకోవచ్చు! దీన్ని ఇలా ఆలోచించు: ఒక recipe book page లో multiple recipes ఉంటాయి 📖 — Recipe 1: sandwich ఎలా తయారు చేయాలో, Recipe 2: juice ఎలా తయారు చేయాలో, రెండింటినీ ఒక్క page లో sequential గా follow చేయవచ్చు.
+
 ---
 
 ## Why Use Multiple Queries?
@@ -20,6 +22,14 @@ Remember from the beginning? We learned that stored procedures can have MANY SQL
 - ✅ Run several tasks together automatically
 - ✅ Save time and effort
 - ✅ Everything happens in the correct order
+
+> - Multiple Queries ఎందుకు వాడాలి అంటే? మొదట నుండి గుర్తుందా? Stored Procedures లో చాలా SQL statements ఒకేసారి పెట్టుకోవచ్చని నేర్చుకున్నాం!
+
+> - వీటితో లాభాలు:
+> - ✅ ఒకేసారి multiple reports create చేయొచ్చు
+> - ✅ చాలా tasks ని automatic గా run చేయొచ్చు
+> - ✅ సమయం, effort save అవుతుంది
+> - ✅ అన్నీ correct order లో జరుగుతాయి
 
 ---
 
@@ -56,6 +66,28 @@ WHERE country = 'USA'
 - Filters by country
 
 **Result for USA:** 6 orders, $180 total sales
+
+> - Step-by-Step: Multiple Queries create చేయడం
+> - Step 1: Second Query రాయడం
+> - ఇప్పుడు orders & sales కోసం కొత్త query రాయాలి:
+
+```
+SELECT COUNT(order_id) AS Total_Orders,
+       SUM(sales) AS Total_Sales
+FROM sales_orders
+JOIN sales_customers 
+    ON sales_orders.customer_id = sales_customers.customer_id
+WHERE country = 'USA'
+```
+
+> - ఇది ఏం చేస్తుందంటే:
+
+> - * Total orders count చేస్తుంది
+> - * అన్ని sales amounts add చేస్తుంది
+> - * రెండు tables (orders + customers) join చేస్తుంది
+> - * country ద్వారా filter చేస్తుంది
+
+> - Result USA కోసం: 6 orders, $180 total sales
 
 ---
 

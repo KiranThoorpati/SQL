@@ -8,6 +8,8 @@
 - The form is the same
 - But YOU decide: cheese, pepperoni, or vegetables each time!
 
+> - Parameter అంటే, Stored Procedure run చేసే ప్రతి సారి నువ్వు భర్తీ చేయగల ఒక blank space లాంటిది. దీన్ని ఇలా అర్థం చేసుకో: pizza order form లాంటిది, form అదే ఉంటుంది కానీ ఒక్కో సారి నువ్వే decide చేస్తావు — cheese, pepperoni, లేదా vegetables 🍕
+
 ---
 
 ## Why Do We Need Parameters?
@@ -25,6 +27,18 @@ Imagine you need TWO reports:
 
 **This is BAD CODING!** 😞 Repeating the same code is never good!
 
+> - Parameters లేకపోతే సమస్య 😕 — నువ్వు రెండు reports తయారు చేయాలనుకో:
+
+> - Report 1: US customers మొత్తం మరియు average score
+> - Report 2: German customers మొత్తం మరియు average score
+
+> - Parameters లేకపోతే, నీకు అవసరం అవుతుంది:
+> - ❌ రెండు వేర్వేరు stored procedures
+> - ❌ code ఎక్కువగా పునరావృతం అవుతుంది (country name మాత్రమే వేరుగా)
+> - ❌ maintain & update చేయడానికి ఎక్కువ పని
+
+> - ఇది BAD CODING 😞 — ఒక్క code repeated చేయడం ఎప్పుడూ మంచిది కాదు!
+
 ---
 
 ### The Solution: Use Parameters! ✨
@@ -33,6 +47,13 @@ Imagine you need TWO reports:
 - ✅ ONE stored procedure
 - ✅ Pass different country names when you execute it
 - ✅ Flexible, reusable, and professional!
+
+> - సొల్యూషన్: Parameters వాడండి! ✨
+
+> - Parameters తో:
+> - ✅ ఒక్క stored procedure తో సరిపోతుంది
+> - ✅ Execute చేసినప్పుడు country names వేరుగా pass చేయొచ్చు
+> - ✅ Flexible, reusable, మరియు professional అవుతుంది!
 
 ---
 
@@ -65,6 +86,9 @@ END
 **Problems:**
 - Two stored procedures doing almost the same thing
 - If you need France, you'd create a THIRD one! 😫
+
+> - సమస్యలు:
+> - ఇరువురు stored procedures కూడా almost ఒకే పని చేస్తున్నారు. France కోసం కావాలంటే, మూడవ one create చేయాలి 😫
 
 ---
 
@@ -189,6 +213,8 @@ EXECUTE Get_Customer_Summary @country = 'Germany'
 2. **Your value has priority** - If you pass a value, SQL uses YOUR value, not the default
 3. **Default must make sense** - Choose the most commonly used value
 
+> - Important Rules About Defaults 📋 — Default అంటే backup లాంటిది, నువ్వు value provide చేయకపోతే మాత్రమే వాడబడుతుంది. నీ value కి ప్రాధాన్యం ఉంటుంది — value pass చేస్తే SQL నీ value ని వాడుతుంది, default కాదా. Default meaning సరిగా ఉండాలి — ఎక్కువగా వాడే value ని ఎంచుకో.
+
 ---
 
 ## Deleting Stored Procedures
@@ -239,6 +265,8 @@ EXECUTE Get_Customer_Summary @country = 'France'
 | **Default Value** | Backup value if nothing provided | `@country VARCHAR(50) = 'USA'` |
 | **ALTER** | Update existing procedure | `ALTER PROCEDURE...` |
 | **DROP** | Delete a procedure | `DROP PROCEDURE...` |
+
+> - Key Takeaways 🎯 — Parameter అంటే నీం భర్తీ చేసుకునే blank space (@country VARCHAR(50)), Static Value అంటే fixed value, change కాదు (WHERE country = 'USA' ❌), Dynamic Value input ఆధారంగా మారుతుంది (WHERE country = @country ✅), Default Value అంటే value ఇవ్వకపోతే backup గా వాడే value (@country VARCHAR(50) = 'USA'). ALTER అంటే existing procedure update చేయటం (ALTER PROCEDURE…), DROP అంటే procedure delete చేయటం (DROP PROCEDURE…).
 
 ---
 

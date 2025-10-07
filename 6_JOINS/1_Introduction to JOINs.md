@@ -245,6 +245,8 @@ ON customers.CustomerID = orders.CustomerID;
 
 Only Rahul and Amit appear because **only they** have orders! We're not showing order details, just using the orders table to **filter**!
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/2c771ce6-1bec-4ddf-9754-13aa7abdff30" />
+
 ---
 
 ## Visual Understanding: The Circle Diagram

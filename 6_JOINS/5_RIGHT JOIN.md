@@ -8,6 +8,8 @@ Think of it like this:
 - **Left Table** = Extra information (we only take what matches)
 - **Right Table** = Your main source (we need EVERYTHING from here)
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7baa3fc7-e861-4b26-b7ae-749c242efc9b" />
+
 ## Visual Example
 
 ```
@@ -27,7 +29,12 @@ ON A.key = B.key;
 
 ⚠️ **Important:** The order matters! The table after RIGHT JOIN is the one you'll get ALL data from.
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/3f3019b9-b8d1-4020-96d5-7690d6f7d3e3" />
+
 ---
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/36004c67-ff95-4c08-a484-3c2984d35e80" />
+
 
 ## Real Example: Customers and Orders
 
@@ -110,6 +117,9 @@ NULL       | NULL      | 104     | 200
 
 **Success:** All 4 orders are shown! Order 104 appears with NULL for customer details because no customer matches it. ✅
 
+<img width="1918" height="1077" alt="image" src="https://github.com/user-attachments/assets/69898fee-1ac1-4170-8868-69110f237072" />
+
+
 ---
 
 ## 💡 Better Alternative: Use LEFT JOIN Instead!
@@ -140,6 +150,10 @@ NULL       | NULL      | 104     | 200
 ```
 
 **Exactly the same result!** Just start FROM the table you want all data from (Orders). ✅
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1cee940d-903e-4609-b6b1-e6d3667222b2" />
+
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/f4f5c1d5-e678-46a0-a476-74e2ad656566" />
 
 ---
 

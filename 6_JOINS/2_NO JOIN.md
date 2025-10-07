@@ -6,6 +6,8 @@
 
 Think of it like reading two different books - you read them separately, not mixing the pages together!
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/edfdca2f-c821-4a11-95a3-5e20caa681ec" />
+
 ---
 
 ## When to Use NO JOIN?

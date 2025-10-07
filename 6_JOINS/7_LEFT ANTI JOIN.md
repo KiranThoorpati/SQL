@@ -8,6 +8,11 @@ Think of it like this:
 - **Left Table** = Show me ONLY the unmatched rows (things that exist here but not there)
 - **Right Table** = We don't want any data from here, just use it for checking
 
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/bfce8a5c-8467-4720-a8ea-1cf89748859e" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/c25b4f34-7d48-4f2a-add5-48ae2fdca839" />
+
+
 ## Visual Example
 
 ```
@@ -31,6 +36,10 @@ WHERE B.key IS NULL;
 - Use LEFT JOIN first
 - Then add WHERE to filter out matches
 - Check if the right table's key IS NULL
+
+<img width="1911" height="1071" alt="image" src="https://github.com/user-attachments/assets/f5092381-3ae6-4aef-bb46-76f90676950e" />
+
+<img width="1918" height="1072" alt="image" src="https://github.com/user-attachments/assets/362391ca-b665-4472-804a-c1f26935f24c" />
 
 ---
 

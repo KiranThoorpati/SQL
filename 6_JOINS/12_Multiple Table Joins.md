@@ -10,6 +10,8 @@
 - Use LEFT JOIN for everything
 - Control final results with WHERE clause
 
+<img width="1901" height="1072" alt="image" src="https://github.com/user-attachments/assets/7b9da12e-ae6d-4d7b-b026-cbe6302b5566" />
+
 **Visual:**
 ```
         Main Table A

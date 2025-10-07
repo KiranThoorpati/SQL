@@ -201,6 +201,7 @@ ON m.MemberID = b.MemberID;
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/d293e727-5610-46a8-a178-596d73862250" />
 
+<img width="1917" height="1075" alt="image" src="https://github.com/user-attachments/assets/c25022fc-b3bb-4b1e-8d4f-ef41ad0f3ffc" />
 
 
 ## Example: Customers and Orders

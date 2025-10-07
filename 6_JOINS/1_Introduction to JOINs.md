@@ -381,4 +381,7 @@ In the following lessons, we'll learn:
 
 ---
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/759a774d-a320-45a2-8ca1-7c43ce533301" />
+
+
 **Remember:** JOINs are like connecting puzzle pieces - you need a matching part (key column) to fit them together! 🧩

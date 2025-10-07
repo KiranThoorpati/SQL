@@ -204,6 +204,8 @@ ON customers.CountryCode = countries.CountryCode;
 
 Now our customer table is **enriched** with zip code information! ✨
 
+<img width="1918" height="1075" alt="image" src="https://github.com/user-attachments/assets/07299f50-fa78-4be3-9e68-2d821871f1b8" />
+
 ---
 
 ### Reason 3: **Checking Existence** (Filter Based on Another Table)

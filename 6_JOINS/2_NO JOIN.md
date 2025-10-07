@@ -31,6 +31,8 @@ SELECT * FROM table2;
 - Each query gives its own result
 - NO JOIN keyword is used!
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/307ba952-f98a-46a7-940e-dd4bcba40cfd" />
+
 ---
 
 ## Example 1: School Data

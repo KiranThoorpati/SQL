@@ -8,6 +8,8 @@ Think of it like this:
 - **Left Table** = Your main source (we need EVERYTHING from here)
 - **Right Table** = Extra information (we only take what matches)
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/2521b632-65f1-4e41-8ce0-3f65e4855c79" />
+
 ## Visual Example
 
 ```
@@ -27,7 +29,12 @@ ON A.key = B.key;
 
 ⚠️ **Important:** The order of tables matters! Always start with the table you want ALL data from.
 
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/c07bd0dd-1cec-470c-984b-5dd08ba5cef6" />
+
 ---
+
+<img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/898680b5-56b2-4f21-b71c-e78834869b23" />
+
 
 ## Real Example: Customers and Orders
 
@@ -110,6 +117,8 @@ CustomerID | FirstName | OrderID | Sales
 
 **Success:** All 5 customers are shown! Martin and Peter have NULL because they didn't place any orders. ✅
 
+<img width="1918" height="1076" alt="image" src="https://github.com/user-attachments/assets/7a34e4cf-bb1c-4892-940c-24a5f953d15c" />
+
 ---
 
 ## How SQL Executes LEFT JOIN (Step-by-Step)
@@ -127,6 +136,8 @@ CustomerID | FirstName | OrderID | Sales
 - **Mike (ID=3)**: Found in Orders → Shows OrderID 103, Sales 450
 - **Martin (ID=4)**: NOT found in Orders → Shows NULL, NULL
 - **Peter (ID=5)**: NOT found in Orders → Shows NULL, NULL
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/d70d2f58-0049-4244-8ce9-bc3ba82757a5" />
 
 ---
 

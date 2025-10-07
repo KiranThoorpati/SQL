@@ -16,6 +16,8 @@ Imagine you have two notebooks with different information. Sometimes you need in
 | **JOINs** | Puts columns side by side | **Wider** table |
 | **Set Operators** | Stacks rows on top of each other | **Longer** table |
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/cb90f304-cb17-4f35-9456-d0def79f9168" />
+
 ---
 
 ## Understanding JOINs (Combining Columns)

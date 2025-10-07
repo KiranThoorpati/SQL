@@ -9,6 +9,10 @@ Think of it like this:
 - **Right Table** = Match it with ALL rows
 - **Result** = Every possible pair!
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/84517549-93c5-4302-a290-1c7c334b8576" />
+
+<img width="982" height="547" alt="image" src="https://github.com/user-attachments/assets/ab0681b5-edf0-42dd-82bf-38f626634c1a" />
+
 ## Visual Example
 
 ```
@@ -39,6 +43,9 @@ CROSS JOIN table_B;
 ⚠️ **Warning:** Can create HUGE result sets! Be careful!
 
 ---
+
+<img width="1919" height="1072" alt="image" src="https://github.com/user-attachments/assets/8e23134c-fff3-4667-a63e-54c2de9825b9" />
+
 
 ## Real Example: All Combinations
 

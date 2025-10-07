@@ -9,6 +9,10 @@ Think of it like this:
 - **Right Table** = Get EVERYTHING (the whole circle)
 - Both tables are equally important!
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/13e84dfa-8a63-495b-971f-543f4fe4bc8b" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/62bf85b4-e8fd-47e7-8f01-7082cde7a952" />
+
 ## Visual Example
 
 ```
@@ -60,6 +64,9 @@ OrderID | CustomerID | Sales
 ### Task
 Get all customers and all orders, **even if there is no match**.
 
+<img width="1913" height="1008" alt="image" src="https://github.com/user-attachments/assets/399e317e-4032-42e0-be06-a17adaf7c6d0" />
+
+
 ---
 
 ### ✅ Solution - FULL JOIN
@@ -86,6 +93,10 @@ CustomerID | FirstName | OrderID | Sales
 5          | Peter     | NULL    | NULL
 NULL       | NULL      | 104     | 200
 ```
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/9d8578ac-241a-4402-bcc5-eae091b1f32b" />
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/29221086-2cdd-49a3-9dcc-9770500ba3d9" />
 
 **Perfect!** ✅
 - All 5 customers are shown (including Martin and Peter with no orders)
@@ -123,6 +134,8 @@ Add Order 104 with NULL for customer info:
 ```
 NULL | NULL | 104 | 200
 ```
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/66532d0e-841e-47fa-8190-2db43db95b1d" />
 
 ---
 

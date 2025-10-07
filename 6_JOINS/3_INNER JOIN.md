@@ -35,6 +35,8 @@ ON table1.key_column = table2.key_column;
 - **INNER JOIN table2** → Right table
 - **ON** → How to connect them (the matching condition)
 
+<img width="1919" height="1075" alt="image" src="https://github.com/user-attachments/assets/38436c9e-8d6b-4ae7-aa2d-32b9d35bb199" />
+
 ---
 
 ## Simple Example: Students and Marks

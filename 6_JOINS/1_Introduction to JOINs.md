@@ -110,6 +110,8 @@ ON customers.CustomerID = customer_countries.CustomerID;
 
 **Note:** Sarah is not shown because ID 3 has no match in the second table!
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/8ff89e9b-21f7-4464-860f-39d76f8518bd" />
+
 ---
 
 ## Why Do We Use JOINs?

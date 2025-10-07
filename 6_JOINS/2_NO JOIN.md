@@ -122,6 +122,8 @@ SELECT * FROM orders;
 
 **See?** No connection between customers and orders! They're completely separate! 📊
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/87c92280-995d-4a52-adb7-68806026e0f9" />
+
 ---
 
 ## Example 3: Library System

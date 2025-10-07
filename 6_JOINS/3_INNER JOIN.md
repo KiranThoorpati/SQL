@@ -278,6 +278,8 @@ ON c.ID = o.CustomerID;
 
 **Final Result:** Only 3 rows (Maria, John, George)
 
+<img width="1914" height="1074" alt="image" src="https://github.com/user-attachments/assets/a25efc19-9408-4187-a223-5008ca0c4865" />
+
 ---
 
 ## Table Order Doesn't Matter!

@@ -197,6 +197,12 @@ ON m.MemberID = b.MemberID;
 
 ---
 
+<img width="1918" height="1077" alt="image" src="https://github.com/user-attachments/assets/a6f1f3f0-419c-4a08-b541-737b42a56824" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/d293e727-5610-46a8-a178-596d73862250" />
+
+
+
 ## Example: Customers and Orders
 
 **Table: customers**

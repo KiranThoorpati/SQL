@@ -128,6 +128,8 @@ In real databases, information about one topic is often split across multiple ta
 
 **Solution:** JOIN all 4 tables to see the **complete picture**!
 
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/f51952b5-7b38-4494-8c9d-b21406177d0f" />
+
 ---
 
 ### Real-World Example: Student Information

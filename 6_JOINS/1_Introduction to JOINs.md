@@ -7,6 +7,8 @@ Imagine you have two notebooks with different information. Sometimes you need in
 ### 1. Combining COLUMNS (Side by Side) → **JOINs**
 ### 2. Combining ROWS (Stacking Up) → **Set Operators**
 
+> - "Stacking up" అంటే సింపుల్‌గా చెప్పాలంటే — ఏదైనా వస్తువు లేదా విషయం ఒకదానిమీద ఒకటి పోగవడం, లేదా క్రమంగా ఎక్కువ అవుతూ పోవడం అని అర్థం. ఉదాహరణకి, “Work is stacking up” అంటే “పనులు ఒకదానిమీద ఒకటి పేరుకుపోతున్నాయి” లేదా “చాలా పనులు చేరిపోతున్నాయి” అని అంటారు.
+
 ---
 
 ## Two Methods to Combine Tables

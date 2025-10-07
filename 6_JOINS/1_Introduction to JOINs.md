@@ -274,6 +274,8 @@ When you JOIN them, they **overlap**:
 2. **Left Circle Only** = Data only in Table A
 3. **Right Circle Only** = Data only in Table B
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/becf1389-0287-43ed-a7ef-6fbcefec0aa7" />
+
 ---
 
 ## Requirements for JOINs vs Set Operators

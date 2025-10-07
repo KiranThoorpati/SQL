@@ -4,6 +4,8 @@
 
 **INNER JOIN** returns only the **matching rows** from both tables. Think of it like finding students who are in BOTH the cricket team AND the debate team - only those who are in both groups!
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/4814b63a-cc5d-4779-b97b-b7fb7b604885" />
+
 ### Visual Understanding (Circle Diagram)
 
 ```

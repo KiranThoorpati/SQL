@@ -8,6 +8,10 @@ Think of it like this:
 - **Left Table** = Used only for checking (not for getting data)
 - **Right Table** = Show me ONLY the unmatched rows (things that exist here but not there)
 
+<img width="1915" height="1079" alt="image" src="https://github.com/user-attachments/assets/5456522c-e062-459d-b900-344ee875e25c" />
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/98450e18-58e0-4409-aa87-968ce1965c78" />
+
 ## Visual Example
 
 ```
@@ -61,6 +65,10 @@ OrderID | CustomerID | Sales
 
 ### Task
 Get all orders **without matching customers** (invalid/orphaned orders).
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/51a59f1c-a94f-4f97-8478-91c64a9cef45" />
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/9d0c9e1e-83a9-41a1-9a93-b9a1fce66cab" />
 
 ---
 
@@ -117,6 +125,11 @@ OrderID | CustomerID | Sales
 This is a **data quality issue** - someone needs to fix this order or find the missing customer!
 
 ---
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/c9b525f8-bf71-45aa-8064-680ed765aeae" />
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/64a6d999-a132-47d3-aa56-732a58506b1a" />
+
 
 ## Better Alternative: Use LEFT JOIN Instead! ⭐
 

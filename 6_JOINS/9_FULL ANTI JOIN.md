@@ -9,6 +9,10 @@ Think of it like this:
 - **Right Table** = Show me rows that DON'T exist in the left table
 - **We want ONLY the unmatched data from BOTH sides!**
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/b004b37c-36f4-431f-a749-653b469fe772" />
+
+<img width="1917" height="1072" alt="image" src="https://github.com/user-attachments/assets/65d7ccd8-6220-4433-94f0-70b3aa1335e7" />
+
 ## Visual Example
 
 ```
@@ -65,6 +69,10 @@ OrderID | CustomerID | Sales
 
 ### Task
 Find customers without orders **AND** orders without customers.
+
+<img width="1917" height="1082" alt="image" src="https://github.com/user-attachments/assets/217f526e-b0c4-465c-a0f4-a0bb4aafdb2c" />
+
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/6c899660-5fe0-4498-8062-ec5e7830a258" />
 
 ---
 
@@ -271,6 +279,9 @@ This keeps only the rows with mismatches!
 ## Bonus Challenge: Get Matches Without INNER JOIN!
 
 **Task:** Get all customers with their orders (only those who ordered) BUT without using INNER JOIN.
+
+<img width="983" height="552" alt="image" src="https://github.com/user-attachments/assets/3464e56e-1dc2-4090-9bbd-629a2b5af940" />
+
 
 **Solution:**
 ```sql

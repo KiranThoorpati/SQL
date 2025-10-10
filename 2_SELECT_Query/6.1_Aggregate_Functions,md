@@ -1,0 +1,179 @@
+# SQL Aggregate Functions - A Beginner's Guide
+
+## What are Aggregate Functions?
+
+Imagine you have a box full of different colored marbles, and you want to count them or find the average size. Aggregate functions in SQL work similarly - they take many values and give you one answer!
+
+**Simple Definition:** Aggregate functions take multiple rows of data and combine them to give you a single result.
+
+## The 5 Most Common Aggregate Functions
+
+### 1. **COUNT** - Counts how many items you have
+### 2. **SUM** - Adds up all the numbers
+### 3. **AVG** - Finds the average (mean) value
+### 4. **MAX** - Finds the largest value
+### 5. **MIN** - Finds the smallest value
+
+---
+
+## Let's Learn with Examples!
+
+Imagine we have a table called **students** with test scores:
+
+| student_id | student_name | math_score |
+|------------|--------------|------------|
+| 1 | Alice | 85 |
+| 2 | Bob | 92 |
+| 3 | Charlie | 78 |
+| 4 | Diana | 95 |
+| 5 | Eve | 88 |
+
+---
+
+### Example 1: COUNT - How many students took the test?
+
+**SQL Query:**
+```sql
+SELECT COUNT(*) FROM students;
+```
+
+**Output:**
+```
+count
+-----
+5
+```
+
+**Explanation:** This counts all the rows in the table. We have 5 students!
+
+---
+
+### Example 2: MIN - What's the lowest score?
+
+**SQL Query:**
+```sql
+SELECT MIN(math_score) FROM students;
+```
+
+**Output:**
+```
+min
+---
+78
+```
+
+**Explanation:** The smallest score in the table is 78 (Charlie's score).
+
+---
+
+### Example 3: MAX - What's the highest score?
+
+**SQL Query:**
+```sql
+SELECT MAX(math_score) FROM students;
+```
+
+**Output:**
+```
+max
+---
+95
+```
+
+**Explanation:** The highest score is 95 (Diana's score).
+
+---
+
+### Example 4: SUM - What's the total of all scores?
+
+**SQL Query:**
+```sql
+SELECT SUM(math_score) FROM students;
+```
+
+**Output:**
+```
+sum
+---
+438
+```
+
+**Explanation:** If we add 85 + 92 + 78 + 95 + 88 = 438
+
+---
+
+### Example 5: AVG - What's the average score?
+
+**SQL Query:**
+```sql
+SELECT AVG(math_score) FROM students;
+```
+
+**Output:**
+```
+avg
+-----------------
+87.6000000000000
+```
+
+**Explanation:** The average is 438 ÷ 5 = 87.6, but SQL shows many decimal places!
+
+---
+
+### Example 6: ROUND with AVG - Making the average look nicer
+
+**SQL Query:**
+```sql
+SELECT ROUND(AVG(math_score), 2) FROM students;
+```
+
+**Output:**
+```
+round
+-----
+87.60
+```
+
+**Explanation:** The ROUND function makes the number show only 2 decimal places. The "2" tells SQL how many digits after the decimal point we want.
+
+---
+
+## Important Things to Remember! 🎯
+
+1. **Aggregate functions turn many values into ONE value**
+2. **You can only use them in SELECT or HAVING clauses** (we'll learn HAVING later!)
+3. **COUNT(*) counts all rows** - you can use * or a column name
+4. **AVG gives lots of decimal places** - use ROUND to make it cleaner
+5. **You can't mix regular columns with aggregate functions** (unless you use GROUP BY, which we'll learn next!)
+
+---
+
+## Practice Question
+
+If we had a **books** table like this:
+
+| book_id | title | price |
+|---------|-------|-------|
+| 1 | Mystery Book | 12.99 |
+| 2 | Science Book | 15.50 |
+| 3 | Story Book | 9.99 |
+
+**What would this query return?**
+```sql
+SELECT SUM(price) FROM books;
+```
+
+**Answer:** 38.48 (because 12.99 + 15.50 + 9.99 = 38.48)
+
+---
+
+## Summary
+
+Aggregate functions are like mathematical tools that help you analyze your data:
+- **COUNT** = How many?
+- **SUM** = What's the total?
+- **AVG** = What's the average?
+- **MAX** = What's the biggest?
+- **MIN** = What's the smallest?
+
+Next, you'll learn about **GROUP BY**, which lets you use these functions on different groups of data at the same time!

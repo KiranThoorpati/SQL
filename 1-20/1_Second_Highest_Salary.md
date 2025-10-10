@@ -2,12 +2,8 @@
 1. Find the second highest salary from the Employee table.
 
 ```sql
-SELECT MAX(salary) AS SecondHighestSalary
-FROM employees
-WHERE salary < (
- SELECT MAX(salary)
- FROM employees
-);
+SELECT MAX(salary) AS SecondHighestSalary FROM employees
+WHERE salary < ( SELECT MAX(salary) FROM employees);
 ```
 ---
 

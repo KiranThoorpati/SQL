@@ -12,6 +12,8 @@
 - Who marked them present
 - Any changes to their records
 
+> - ఆడిట్ లాగ్ అంటే ఏమిటి అంటే — అది ఒక రికార్డ్ లాంటిది, దానిలో ఎవరు ఎప్పుడు ఏమి మార్చారో, ఏ డేటాలో మార్పు జరిగిందో అన్నది నమోదు చేస్తారు. దీన్ని స్కూల్ హాజరు రిజిస్టర్‌లా ఊహించుకో — విద్యార్థులు ఎప్పుడు వచ్చారు, ఎప్పుడు వెళ్లారు, ఎవరు హాజరు పెట్టారు, ఎవరైనా హాజరు రికార్డులో ఏమైనా మార్పులు చేశారా అన్నదాన్ని గుర్తుంచుకునే విధంగా ఉంటుంది.
+
 ---
 
 ## Why Do We Need Audit Logs?
@@ -34,6 +36,8 @@ The employee table contains **sensitive information**:
 - Investigation when problems occur
 - Security and accountability
 - Historical tracking
+
+> - మనకు ఆడిట్ లాగ్స్ ఎందుకు అవసరం అంటే — ఉదాహరణకి ఉద్యోగుల టేబుల్‌లో కొత్త ఉద్యోగులను జోడించడం, జీతం మార్పులు చేయడం, ఉద్యోగం నుంచి తీసేయడం, లేదా పోస్టు మార్చడం లాంటివి ఉంటాయి. ఇవి చాలా సున్నితమైన వివరాలు కాబట్టి, ఎప్పుడు మార్పు జరిగింది, ఎవరు చేశారు, ఏమి మార్చారు అన్నది ట్రాక్‌ చేయాలి. ఇలా చేయడం వల్ల నిబంధనలకు అనుగుణంగా పని చేస్తున్నామో లేదో చూడొచ్చు, ఎక్కడైనా సమస్య వస్తే దాని మూలం కనుక్కోవచ్చు, భద్రత మరియు బాధ్యత స్పష్టంగా ఉంటుంది, అలాగే పాత మార్పుల చరిత్ర కూడా దొరుకుతుంది.
 
 ---
 
@@ -85,6 +89,7 @@ END
 ### Step 1: Create the Log Table
 
 First, create a table to store all the log entries:
+> - మొదటగా, అన్ని లాగ్ వివరాలను సేవ్ చేసేందుకు ఒక టేబుల్‌ను సృష్టించాలి. ఉదాహరణకు:
 
 ```sql
 CREATE TABLE sales_employee_logs (
@@ -103,11 +108,20 @@ CREATE TABLE sales_employee_logs (
 | `log_message` | VARCHAR(255) | Description of what happened |
 | `log_date` | DATETIME | When it happened |
 
+```
+ఈ టేబుల్‌లోని కాలమ్స్ అర్థం ఇలా —
+log_id: ప్రతి లాగ్‌కు ప్రత్యేక ID (ఆటోమేటిక్‌గా పెరుగుతుంది),
+employee_id: ఏ ఉద్యోగి రికార్డ్‌లో మార్పు జరిగిందో,
+log_message: ఏమి జరిగిందో చిన్న వివరణ,
+log_date: ఆ మార్పు ఎప్పుడు జరిగిందో నమోదు చేసేందుకు ఉపయోగిస్తారు.
+```
+
 ---
 
 ### Step 2: Create the Trigger
 
 Now create a trigger that logs every new employee insertion:
+> - ఇప్పుడు, ప్రతి సారి కొత్త ఉద్యోగి రికార్డ్ టేబుల్‌లో చేర్చబడినప్పుడు ఆ వివరాన్ని లాగ్ టేబుల్‌లో ఆటోమేటిక్‌గా నమోదు చేసే ట్రిగ్గర్‌ని సృష్టించాలి.
 
 ```sql
 CREATE TRIGGER trg_after_insert_employee
@@ -142,6 +156,8 @@ AFTER INSERT
 - Attached to: `sales_employee` table
 - Fires: AFTER someone inserts data
 
+> - trg_after_insert_employee అనే పేరు ఉన్న ట్రిగ్గర్ (ఇందులో “trg_” అంటే ఇది ట్రిగ్గర్ అని సూచిస్తుంది), ఇది sales_employee టేబుల్‌కి జత చేయబడింది, మరియు ఎవరైనా కొత్త రికార్డ్ ఇన్‌సర్ట్ చేసిన తర్వాత ఆటోమేటిక్‌గా పనిచేస్తుంది.
+
 ---
 
 ### The Special "inserted" Table
@@ -162,6 +178,12 @@ FROM inserted
 - `inserted` - Contains NEW data (for INSERT and UPDATE)
 - `deleted` - Contains OLD data (for DELETE and UPDATE)
 
+> - **“inserted” టేబుల్** అంటే — ఇది ట్రిగ్గర్ పనిచేసే సమయంలో తాత్కాలికంగా ఉండే ఒక వర్చువల్ టేబుల్‌. ఈ టేబుల్‌లో ఇప్పుడే ఇన్‌సర్ట్ చేసిన కొత్త డేటా ఉంటుంది, మరియు ఇది మీ మెయిన్ టేబుల్‌లో ఉన్న కాలమ్స్‌లాగే ఉంటుంది. ఇది SQL ఆటోమేటిక్‌గా సృష్టిస్తుంది, కానీ ట్రిగ్గర్ బయట దీన్ని యాక్సెస్ చేయలేము ఎందుకంటే ఇది తాత్కాలికంగా మాత్రమే ఉంటుంది.
+
+> - ఇలాంటి స్పెషల్ టేబుల్స్ రెండూ ఉంటాయి —
+> - **inserted** → కొత్త డేటా (INSERT, UPDATE సమయంలో)
+> - **deleted** → పాత డేటా (DELETE, UPDATE సమయంలో)
+
 ---
 
 ### Building the Log Message:
@@ -177,6 +199,8 @@ FROM inserted
 
 **Result:** "New employee added - Employee ID: 6"
 
+> - ఇక్కడ `'New employee added - Employee ID: ' + CAST(employee_id AS VARCHAR)` అని రాయడం వల్ల, మెసేజ్ తయారవుతుంది. కానీ **CAST** ఎందుకు వాడుతున్నామంటే — `employee_id` ఒక **INTEGER** (అంటే నంబర్), కానీ మెసేజ్ మాత్రం **STRING** (అక్షరాల రూపంలో ఉన్న టెక్స్ట్) కావాలి. అందుకే **CAST** వాడి నంబర్‌ను టెక్స్ట్‌గా మార్చుతాం. ఉదాహరణకి ఫలితం ఇలా వస్తుంది — `"New employee added - Employee ID: 6"`
+
 ---
 
 ### Using GETDATE():
@@ -186,6 +210,8 @@ log_date = GETDATE()
 ```
 
 `GETDATE()` returns the current date and time automatically.
+
+> - `GETDATE()` అంటే ప్రస్తుత తేదీ మరియు సమయాన్ని ఆటోమేటిక్‌గా ఇస్తుంది. ఉదాహరణకి, `log_date = GETDATE()` అని రాస్తే, ఆ రికార్డ్ సృష్టించిన సమయం (date & time) టేబుల్‌లో ఆటోమేటిక్‌గా సేవ్ అవుతుంది.
 
 ---
 
@@ -224,6 +250,8 @@ SELECT * FROM sales_employee_logs;
 
 ### Insert a New Employee:
 
+> - కొత్త ఉద్యోగిని చేర్చడం ఇలా జరుగుతుంది:
+
 ```sql
 INSERT INTO sales_employee (employee_id, first_name, last_name, position, birth_date, gender, salary, hierarchy)
 VALUES (6, 'Maria', 'Garcia', 'HR', '1990-05-15', 'Female', 55000, 3);
@@ -233,6 +261,8 @@ VALUES (6, 'Maria', 'Garcia', 'HR', '1990-05-15', 'Female', 55000, 3);
 1. Maria is inserted into `sales_employee` table
 2. Trigger fires immediately
 3. Log entry is created in `sales_employee_logs`
+
+> - ఇక్కడ ఏమి అవుతుంది అంటే — Maria sales_employee టేబుల్‌లో చేర్చబడుతుంది, వెంటనే ట్రిగ్గర్ పనిచేస్తుంది, మరియు ఆచరణలో ఉన్న లాగ్ sales_employee_logs టేబుల్‌లో ఆటోమేటిక్‌గా నమోదు అవుతుంది.
 
 ---
 
@@ -249,6 +279,7 @@ SELECT * FROM sales_employee_logs;
 | 1 | 6 | New employee added - Employee ID: 6 | 2025-09-30 14:30:22 |
 
 **It worked!** The log was created automatically!
+> - వచ్చింది! లాగ్ ఆటోమేటిక్‌గా క్రియేట్ అయ్యింది!
 
 ---
 
@@ -268,6 +299,8 @@ VALUES (7, 'John', 'Smith', 'Sales', '1988-08-20', 'Male', 60000, 2);
 
 **Every insertion is automatically logged!**
 
+> - మీరు కొత్త ఉద్యోగిని చేర్చితే, ఆ మార్పు గురించి sales_employee_logs అనే టేబుల్‌లో ఏం మారింది, ఎవరు చేర్చారు, ఎప్పుడు చేర్చారు అన్న సమాచారం ఆటోమేటిక్‌గా రికార్డ్ అవుతుంది.
+
 ---
 
 ## Finding Your Triggers
@@ -280,6 +313,8 @@ VALUES (7, 'John', 'Smith', 'Sales', '1988-08-20', 'Male', 60000, 2);
 4. Expand your table (e.g., `sales_employee`)
 5. Expand **Triggers** folder
 6. You'll see: `trg_after_insert_employee`
+
+> - మీ ట్రిగ్గర్‌లు ఎలా చూడాలో SQL Server Management Studio లో ఇలా చెయ్యాలి: Object Explorer లోకి వెళ్లి, మీ డేటాబేస్ (ఉదాహరణకి **sales_DB**)ని ఎక్స్‌పాండ్ చేయండి, ఆ తర్వాత Tables ని ఎక్స్‌పాండ్ చేసి, మీ టేబుల్ (ఉదాహరణకి **sales_employee**)ని ఎక్స్‌పాండ్ చేయండి, Triggers ఫోల్డర్‌ని ఎక్స్‌పాండ్ చేయండి. ఇక్కడ మీరు **trg_after_insert_employee** ట్రిగ్గర్‌ని చూడవచ్చు.
 
 ---
 
@@ -322,12 +357,14 @@ END
 ```
 
 **Note:** For DELETE, use the `deleted` table instead of `inserted`!
+> - గమనిక: **DELETE** క్వెరీ కోసం, **inserted** బదులు **deleted** టేబుల్‌ను ఉపయోగించాలి.
 
 ---
 
 ### Trigger for Multiple Operations:
 
 You can have one trigger respond to multiple events:
+> - ఒకే ట్రిగ్గర్‌ను ఒకటి కంటే ఎక్కువ ఈవెంట్స్‌కు రెస్పాండ్ చేయించవచ్చు.
 
 ```sql
 CREATE TRIGGER trg_log_all_changes
@@ -379,12 +416,14 @@ JOIN inserted i ON d.employee_id = i.employee_id
 ```sql
 'Employee added by ' + SYSTEM_USER + ' at ' + CONVERT(VARCHAR, GETDATE(), 120)
 ```
+> - అంటే, ఎవరు కొత్త ఉద్యోగిని చేర్చారో మరియు ఎప్పుడు చేర్చారో స్పష్టంగా లాగ్‌లో రికార్డు అవుతుంది.
+> - CONVERT(VARCHAR, ..., 120): DateTime ను Text (VARCHAR) లో మార్చుతుంది
 
 ---
 
 ## Real-World Benefits
 
-### Analysis Possibilities:
+### [Analysis Possibilities:](./10/1_New_emp_added_today.md)
 
 ```sql
 -- How many employees were added today?

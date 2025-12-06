@@ -27,7 +27,7 @@ SELECT * FROM table2;
 ```
 
 **Important:** 
-- Use **semicolon (;)** to separate queries
+- Use **semicolon (;)** to separate queries - క్వెరీలను వేర్వేరుగా పెట్టాలంటే సెమికోలన్ (;) ఉపయోగించాలి.
 - Each query gives its own result
 - NO JOIN keyword is used!
 
@@ -53,7 +53,7 @@ SELECT * FROM table2;
 | 101 | Mr. Sharma | Math |
 | 102 | Ms. Gupta | Science |
 
-**Task:** Retrieve all data from students and teachers in two different results.
+**Task:** Retrieve (= తెచ్చుకోవడం) all data from students and teachers in two different results.
 
 **Query:**
 ```sql
@@ -319,6 +319,45 @@ You can filter data in each query separately!
 SELECT * FROM students WHERE Class = '7A';
 SELECT * FROM subjects WHERE Teacher = 'Mr. Sharma';
 ```
+
+అవును — **quotation marks అవసరం** కానీ **ఎప్పుడు అవసరమో** స్పష్టంగా తెలుసుకోవాలి.
+
+### ✔️ Quotation marks అవసరమైనప్పుడు
+
+SQL‌లో **text/string values** ఉపయోగించినప్పుడు తప్పనిసరిగా quotes వేయాలి.
+
+ఉదాహరణలు:
+
+* `'7A'`
+* `'Mr. Sharma'`
+* `'Hyderabad'`
+* `'Male'`
+
+ఇవి **టెక్స్ట్ డేటా**, అందుకే `' '` లో పెట్టాలి.
+
+### ✔️ Quotation marks అవసరం లేని సందర్భాలు
+
+* సంఖ్యలు (numeric values)
+
+  * 10
+  * 5000
+  * 3.14
+
+* true/false
+
+* column names (unless they have spaces, which is rare)
+
+### నీ క్వెరీలో:
+
+```sql
+SELECT * FROM students WHERE Class = '7A';
+SELECT * FROM subjects WHERE Teacher = 'Mr. Sharma';
+```
+
+`'7A'` మరియు `'Mr. Sharma'` రెండూ **text values** కాబట్టి **quotation marks తప్పనిసరి** ✔️
+
+అందువల్ల, అవి లేకపోతే error వస్తుంది.
+
 
 **Expected Output:**
 

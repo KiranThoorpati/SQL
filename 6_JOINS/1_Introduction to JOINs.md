@@ -4,6 +4,8 @@
 
 Imagine you have two notebooks with different information. Sometimes you need information from **both** notebooks together! SQL helps you combine tables in two ways:
 
+ఊహించు, నీ దగ్గర రెండు నోట్‌బుక్స్ ఉన్నాయి, రెండింట్లో వేరువేరు సమాచారం ఉంది. కొన్నిసార్లు రెండింట్లోని సమాచారాన్ని ఒకేసారి కలిసి చూడాల్సి వస్తుంది! అప్పుడు ఆ రెండు టేబుల్స్‌ను కలిపే పని SQL చేస్తుంది.
+
 ### 1. Combining COLUMNS (Side by Side) → **JOINs**
 ### 2. Combining ROWS (Stacking Up) → **Set Operators**
 
@@ -48,17 +50,21 @@ Table A          Table B          Result (Joined)
 **Advanced JOINs:**
 - Focus on **unmatched** data (we'll learn these later!)
 
+అడ్వాన్స్‌డ్ JOINలు అంటే మ్యాచ్ కాకపోయిన డేటాపై ఫోకస్ చేసే జాయిన్‌లు (ఇవి మనం తర్వాతి వాటిలో నేర్చుకుంటాం!).
+
 ---
 
 ## What Are Set Operators? (Combining Rows)
 
 **Types:**
-1. **UNION** - Combines unique rows
-2. **UNION ALL** - Combines all rows (including duplicates)
-3. **EXCEPT** - Rows in first table but not in second
-4. **INTERSECT** - Only rows that appear in both
+1. **UNION** - Combines unique rows - UNION అంటే — రెండు టేబుల్స్‌ నుంచి వచ్చిన డేటాలో డుప్లికేట్‌లను తీసేసి, యూనిక్ రోలను ఒకటిగా కలిపి చూపించడం.
+2. **UNION ALL** - Combines all rows (including duplicates) - UNION ALL అంటే — రెండు టేబుల్స్‌లో ఉన్న రోలన్నీ, డుప్లికేట్‌లు ఉన్నా వాటితో పాటు మొత్తం కలిపి చూపించడం.
+3. **EXCEPT** - Rows in first table but not in second - EXCEPT అంటే — మొదటి టేబుల్‌లో ఉన్న కానీ రెండో టేబుల్‌లో లేని రోలను మాత్రమే చూపించడం.
+4. **INTERSECT** - Only rows that appear in both - INTERSECT అంటే — రెండు టేబుల్స్‌లో కూడా కామన్‌గా ఉన్న రోలను మాత్రమే చూపించడం.
 
 **Rule:** Both tables must have the **same number of columns**!
+
+- రూల్: రెండు టేబుల్స్‌లో కూడా కాలమ్స్ సంఖ్య ఒకేలాగా ఉండాలి!
 
 ---
 
@@ -93,7 +99,7 @@ Table A          Table B          Result (Joined)
 - ID 3: Sarah → No match ❌
 - ID 4: Martin → Germany ✓
 
-**Step 3:** Combine the matched rows
+**Step 3:** Combine the matched rows - Step 3: మ్యాచ్ అయిన రోలను కలిపేసుకోవడం.
 
 **Query:**
 ```sql
@@ -205,6 +211,8 @@ ON customers.CountryCode = countries.CountryCode;
 | Emma | UK | SW1A |
 
 Now our customer table is **enriched** with zip code information! ✨
+
+- ఇప్పుడు మన customer టేబుల్‌కి zip code సమాచారం కూడా జోడించబడింది! ✨
 
 <img width="1918" height="1075" alt="image" src="https://github.com/user-attachments/assets/07299f50-fa78-4be3-9e68-2d821871f1b8" />
 

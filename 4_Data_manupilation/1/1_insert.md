@@ -1,5 +1,3 @@
-Here's the transcript written in proper paragraphs:
-
 **Inserting Data into Database Tables**
 
 Now we're going to modify and manipulate data inside the database. Sometimes you have a table inside your database and the table is empty without any rows or data. In order to add data to the table, you can use the INSERT command, which adds new rows to your table. Of course, the table doesn't always have to be empty to add data. You can add new rows to already existing data, and SQL will append it at the end of the table.

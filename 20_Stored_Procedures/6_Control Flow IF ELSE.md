@@ -45,6 +45,8 @@ This is called **ETL** (Extract, Transform, Load):
 1. **Prepare** the data (clean it)
 2. **Generate** reports (use it)
 
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/703a4c50-0c76-475e-908d-ab96699137a6" />
+
 ---
 
 ## IF-ELSE Syntax (The Rules)

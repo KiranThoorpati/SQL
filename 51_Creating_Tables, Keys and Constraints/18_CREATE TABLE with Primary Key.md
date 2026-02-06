@@ -1,7 +1,3 @@
-Sure 😊 I’ve rewritten the transcript into **clear, well-structured paragraphs**, keeping the explanation intact and easy to read, just like proper learning notes.
-
----
-
 In this lesson, we are going to discuss a very important concept known as the **Primary Key**. A primary key is used when you want to **uniquely identify each record**, meaning each row, in a table. It ensures that every record in the table can be uniquely distinguished from all others.
 
 A primary key does **not allow duplicate values** and also **does not allow NULL values** in the column. It is important not to confuse a primary key with a **UNIQUE constraint**. While both enforce uniqueness, a primary key will never allow NULL values, whereas a UNIQUE constraint can allow NULL values. Also, a table can have multiple UNIQUE constraints, but it can have **only one primary key constraint**.
